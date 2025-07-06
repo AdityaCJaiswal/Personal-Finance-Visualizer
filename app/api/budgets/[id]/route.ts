@@ -4,14 +4,14 @@ import Budget from '@/lib/models/Budget';
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
     
     const body = await request.json();
     const { userId, category, amount } = body;
-    const { id } = params;
+    const { id } = await params;
 
     if (!userId) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
@@ -48,14 +48,14 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
     
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
-    const { id } = params;
+    const { id } = await params;
 
     if (!userId) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
