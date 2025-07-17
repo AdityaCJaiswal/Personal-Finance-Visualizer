@@ -137,7 +137,7 @@ financeflow-nextjs/
 
 **Income Categories:**
 - Salary, Freelance, Investment, Business
-- Rental Income, Dividends, Bonus, Gift
+- Rental Income, Dividend, Bonus, Gift
 - Other Income
 
 **Expense Categories:**
